@@ -14,10 +14,16 @@
                         <img (click)="getPosition($event,pregunta.deltaX)" src="http://localhost:3000/api/file/imagenes/{{pregunta.image_name}}">
                     </div>
                     <section class="center">
-                        <label class="sbw_light">Corresponde a:</label><br />
-                        <select name="select_{{pregunta.id_pregunta}}">
-                            <option value={{parte.id_parte}} *ngFor="let parte of partes">{{parte.nombre}}</option>
-                        </select>
+                        <div class="col-6">
+                            <label class="sbw_light">Corresponde a:</label><br />
+                            <select name="select_{{pregunta.id_pregunta}}">
+                                <option value={{parte.id_parte}} *ngFor="let parte of partes">{{parte.nombre}}</option>
+                            </select>    
+                        </div>
+                        <div class="col-6">
+                            <label>Distancia</label>
+                            {{distancia}}
+                        </div>
                     </section>
                 </section>
             </div>

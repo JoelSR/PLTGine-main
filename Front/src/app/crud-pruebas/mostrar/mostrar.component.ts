@@ -19,6 +19,8 @@ export class MostrarComponent implements OnInit {
   sX = 0;
   sY = 0;
 
+  distancia = 0;
+
   partes: any = [{
     id_parte: '',
     nombre: ''
@@ -63,7 +65,8 @@ export class MostrarComponent implements OnInit {
       this.sY = e.layerY
       let r = Math.sqrt((Math.pow((this.sX-this.fX),2))+(Math.pow((this.sY-this.fY),2)));
       console.log("S",e)
-      console.log(r*pixel*0.1)
+      this.distancia = r*pixel*0.1
+      console.log(this.distancia)
       this.fX = 0
       this.fY = 0
       this.sX = 0

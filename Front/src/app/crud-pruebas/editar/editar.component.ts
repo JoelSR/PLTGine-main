@@ -33,10 +33,10 @@ export class EditarComponent implements OnInit {
     this.pruebaService.editPrueba(this.prueba.id_prueba,this.prueba).subscribe(
       res=>{
         console.log(res);
-        notify.showNotificationMessage('top', 'left', 'info', 1000, 'Se ha modificado el prueba.');
+        notify.showNotificationMessage('top', 'left', 'info', 1000, 'Se ha modificado la prueba.');
       },err=>{
         console.log(err);
-        notify.showNotificationMessage('top', 'left', 'danger', 1000, 'Error en modificar el prueba.');
+        notify.showNotificationMessage('top', 'left', 'danger', 1000, 'Error en modificar la prueba.');
       }
     );
     this.router.navigate(['/pruebas/']);
