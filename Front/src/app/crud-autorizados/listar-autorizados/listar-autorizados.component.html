@@ -1,0 +1,63 @@
+<div class="main-content">
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-md-12">
+                <div class="card">
+                    <div class="card-header card-header-warning">
+                        <div class="row">
+                            <div class="col-md-11">
+                                <h4 class="card-title ">Estudiantes autorizados</h4>
+                            <p class="card-category">Listado de estudiantes que pueden entrenar en la plataforma</p>
+                            </div>
+                            <div class="col-md-1">
+                                <div class="text-right">
+                                    <button mat-raised-button routerLink="/autorizados/add" matTooltip="Agregar estudiante" [matTooltipPosition]="'above'" class="btn btn-success btn-round btn-just-icon btn-lg">
+                                        <i class="material-icons">add</i>
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="card-body">
+                        <div class="table-responsive">
+                            <table class="table text-center">
+                                <thead class=" text-primary" >
+                                    <th>
+                                        RUT
+                                    </th>
+                                    <th>
+                                        Nombre
+                                    </th>
+                                    <th>
+                                        Email
+                                    </th>
+                                    <th>                                        
+                                        Retirar
+                                    </th>
+                                </thead>
+                                <tbody >
+                                    <tr *ngFor="let autorizado of ListaAutorizados">
+                                        <td>
+                                            {{autorizado.rut_estudiante}}
+                                        </td>
+                                        <td>
+                                            {{autorizado.nombre_usuario}} {{autorizado.apellido_pat}} {{autorizado.apellido_mat}}
+                                        </td>
+                                        <td>
+                                            {{autorizado.email}}
+                                        </td>
+                                        <td>
+                                            <button mat-raised-button (click)="retirarAcceso(autorizado.rut_estudiante)" type="button" matTooltip="Retirar acceso" [matTooltipPosition]="'above'" class="btn btn-danger btn-just-icon btn-round">
+                                                <i class="material-icons">close</i>
+                                            </button>
+                                        </td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

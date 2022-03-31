@@ -1,0 +1,27 @@
+<div class="main-content">
+    <div class="container-fluid">
+        <div class="card">
+            <div class="card-header card-header-info">
+                <div *ngFor="let prueba of pruebaCompleta">
+                    <h3>{{prueba.nombre}}</h3>
+                    <p>{{prueba.descripcion}}</p>
+                </div>
+            </div>
+            <div class="card-body">
+                <section class="container border mb-4 p-3 justify-center" *ngFor="let pregunta of preguntas; let i = index">
+                    <h4>{{pregunta.pregunta}}</h4>
+                    <div class="center">
+                        <img (click)="getPosition($event,pregunta.deltaX)" src="http://localhost:3000/api/file/imagenes/{{pregunta.image_name}}">
+                    </div>
+                    <section class="center">
+                        <label class="sbw_light">Corresponde a:</label><br />
+                        <select name="select_{{pregunta.id_pregunta}}">
+                            <option value={{parte.id_parte}} *ngFor="let parte of partes">{{parte.nombre}}</option>
+                        </select>
+                    </section>
+                </section>
+            </div>
+        </div>
+    </div>
+</div>
+

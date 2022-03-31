@@ -1,0 +1,90 @@
+<div class="main-content center">
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-md-8">
+                <div class="card">
+                    <div class="card-header card-header-danger">
+                        <h4 class="card-title">Crear Prueba</h4>
+                        <p class="card-category">Completa los campos para crear una prueba</p>
+                    </div>
+                    <div class="card-body">
+                        <form (ngSubmit)="agregarPrueba()" enctype="multipart/form-data" method="post">
+                            <div class="row">
+                                <div class="col-sm-4">
+                                    <div class="form-group">
+                                        <mat-form-field class="example-full-width">
+                                            <input matInput type="text" [(ngModel)]="prueba.nombre" placeholder="Nombre" class="form-control" />
+                                        </mat-form-field>
+                                    </div>
+                                </div>
+                                <div class="col-sm-12">
+                                    <div class="form-group">
+                                        <mat-form-field class="example-full-width">
+                                            <input matInput type="textarea" [(ngModel)]="prueba.descripcion" placeholder="Descripción" class="form-control" />
+                                        </mat-form-field>
+                                    </div>
+                                </div>
+                            </div>
+                            <hr>
+
+                            <div class="row justify-content-center">
+                                <div class="col-12">
+                                    
+                                  <section class="container border mb-4 p-3" *ngFor="let Pregunta of preguntas; let i = index;">
+                                    <div class="row">
+                                      <div class="col-6">
+                                          <h4>Pregunta {{i + 1}}</h4>
+                                      </div>
+                                      <div class="col-6 text-right">
+                                          <button type="button" class="btn btn-danger btn-sm" (click)="removePregunta(i)">Remover</button>
+                                      </div>
+                                    </div>
+                                    <div class="row">
+                                      <div class="col-12">
+                                          <div class="form-group">
+                                              <label style="color:rgb(7, 7, 7)">Pregunta</label>
+                                              <input type="text" class="form-control" [(ngModel)]="Pregunta.pregunta" name="Pregunta_{{Pregunta.id_pregunta}}" placeholder="Pregunta" required/>
+                                            </div>
+                                      </div>
+                                    </div>
+                                    <input (change)="onFileSelected($event,i)" #fileUpload type="file" class="form-control-file" name="imagen_{{Pregunta.id_pregunta}}" accept=".dcm" required>
+                                    
+                                    <hr>
+                                    <!--RESPUESTAS-->
+                                    <section>
+                                        <label class="sbw_light">Corresponde a:</label><br />
+                                        <select name="select_{{Pregunta.id_pregunta}}" [(ngModel)]="Pregunta.id_parte">
+                                            <option value={{parte.id_parte}} *ngFor="let parte of partes">{{parte.nombre}}</option>
+                                        </select>
+                                    </section>
+
+                                    <!--RESPUESTAS-->
+                                  </section>
+                                  <button type="button" class="btn btn-primary mb-2" (click)="addPregunta()">Añadir Pregunta</button>
+                                    </div>
+                                  </div>
+                            <!--<input (change)="onFileSelected($event)" #fileUpload type="file" class="form-control-file" name="img" accept="image/x-png,image/gif,image/jpeg">
+                            -->
+                            <button mat-raised-button type="submit" class="btn btn-danger pull-right">Agregar prueba</button>
+                        </form>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+  </div>
+
+
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+  <link href="https://cdn.jsdelivr.net/npm/select2@4.0.13/dist/css/select2.min.css" rel="stylesheet" />
+  <script src="https://cdn.jsdelivr.net/npm/select2@4.0.13/dist/js/select2.min.js"></script>
+  <script>
+  $(document).ready(function () {
+      $('select').selectize({
+          sortField: 'text'
+      });
+  });
+</script>
+  

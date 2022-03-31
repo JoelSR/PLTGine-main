@@ -1,0 +1,25 @@
+{
+  "name": "backend",
+  "version": "0.0.1",
+  "description": "Uploading images and measuring distances over the same",
+  "main": "index.js",
+  "dependencies": {
+    "cornerstone-core": "^2.6.1",
+    "cornerstone-tools": "^6.0.6",
+    "cors": "^2.8.5",
+    "dicom-parser": "^1.8.13",
+    "express": "^4.17.3",
+    "file-extension": "^4.0.5",
+    "multer": "^1.4.4",
+    "mysql": "^2.18.1",
+    "nodemon": "^2.0.15",
+    "python-shell": "^3.0.1",
+    "rusha": "^0.8.14"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "nodemon index.js"
+  },
+  "author": "",
+  "license": "ISC"
+}
