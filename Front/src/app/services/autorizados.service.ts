@@ -28,4 +28,5 @@ export interface Autorizado{
     apellido_pat?: string;
     apellido_mat?: string;
     email?: string;
+    password?: string;
 }

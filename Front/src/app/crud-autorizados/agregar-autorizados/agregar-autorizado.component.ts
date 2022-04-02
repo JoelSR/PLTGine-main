@@ -16,6 +16,7 @@ export class AgregarAutorizadoComponent implements OnInit {
     apellido_pat  :  '',
     apellido_mat  : '',
     email         : '',
+    password      : ''
   }
 
   constructor(private autorizadosService: AutorizadosService, private router: Router) { }
