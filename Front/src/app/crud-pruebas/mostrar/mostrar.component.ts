@@ -1,8 +1,7 @@
-import { Component, ElementRef, Inject, OnInit } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Params, Router } from '@angular/router';
 import { PruebasService } from 'app/services/pruebas.service';
-import { DOCUMENT } from '@angular/common';
-import { fx } from 'jquery';
+import { NotificationsComponent } from 'app/notifications/notifications.component';
 
 @Component({
   selector: 'app-mostrar',
@@ -26,8 +25,7 @@ export class MostrarComponent implements OnInit {
     nombre: ''
   }];
 
-  constructor(private pruebasService: PruebasService,private route: ActivatedRoute, @Inject(DOCUMENT) private document, 
-  private elementRef:ElementRef) { }
+  constructor(private pruebasService: PruebasService,private route: ActivatedRoute) { }
 
   ngOnInit(): void {
     this.route.params.forEach((params: Params) => {
@@ -35,13 +33,6 @@ export class MostrarComponent implements OnInit {
       this.getPrueba(id);
     });
     this.getPartes();
-  }
-
-  ngAfterViewInit() {
-    var s = this.document.createElement("script");
-    s.type = "text/javascript";
-    s.src = "../../../assets/distance.js";
-    this.elementRef.nativeElement.appendChild(s);
   }
 
   getPrueba(id:number){
@@ -54,7 +45,9 @@ export class MostrarComponent implements OnInit {
     )
   }
 
+  //click position + pitagoras
   getPosition(e,pixel){
+    let notify = new NotificationsComponent();
     if(this.fX == 0 && this.fY == 0){
       this.fX = e.layerX
       this.fY = e.layerY
@@ -65,8 +58,9 @@ export class MostrarComponent implements OnInit {
       this.sY = e.layerY
       let r = Math.sqrt((Math.pow((this.sX-this.fX),2))+(Math.pow((this.sY-this.fY),2)));
       console.log("S",e)
-      this.distancia = r*pixel*0.1
+      this.distancia = parseFloat((r*pixel*0.1).toFixed(3));
       console.log(this.distancia)
+      notify.showNotificationMessage('top', 'center', 'primary', 100, this.distancia);
       this.fX = 0
       this.fY = 0
       this.sX = 0
