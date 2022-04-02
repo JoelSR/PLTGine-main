@@ -58,7 +58,7 @@ try:
 	db = mysql.connector.connect(
 		host     = 'localhost',
 		user     = 'root',
-		password = '<mysql>',
+		password = '',
 		port     = '3306',
 		database = 'proyObste'
 	)
